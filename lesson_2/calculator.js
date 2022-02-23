@@ -1,45 +1,48 @@
-// # Calculator #
-
+const LANGUAGE = 'en';
 const MESSAGES = require('./calculator_messages.json');
 const rlSync = require('readline-sync');
 
-function prompt(msg) {
-  console.log(`=> ${msg}`);
+function prompt(key) {
+  let message = messages(key, LANGUAGE);
+  console.log(`=> ${message}`);
+}
+
+function messages(message, lang = 'en') {
+  return MESSAGES[lang][message];
 }
 
 function invalidNumber(num) {
   return num.trimStart() === '' || Number.isNaN(Number(num));
 }
 
-prompt(MESSAGES['welocome']);
+prompt('welcome');
 
 while (true) {
-  prompt("What's the first number?");
+  prompt('firstNumber');
   let num1 = rlSync.question();
 
   while (invalidNumber(num1)) {
-    prompt('Hmmm...that does not look like a valid number.');
+    prompt('invalidNumber');
     num1 = rlSync.question();
   }
 
-  prompt("What's the second number?");
+  prompt('secondNumber');
   let num2 = rlSync.question();
 
   while (invalidNumber(num2)) {
-    prompt('Hmmm...that does not look like a valid number.');
+    prompt('invalidNumber');
     num2 = rlSync.question();
   }
 
-  prompt('What operation would you like to perform?\n1) Add  2) Subtract  3) Multiply  4) Divide');
+  prompt('operation');
   let operation = rlSync.question();
 
   while (!['1', '2', '3', '4'].includes(operation)) {
-    prompt('Must choose either 1, 2, 3, or 4');
+    prompt('invalidOp');
     operation = rlSync.question();
   }
 
   let output;
-
   switch (operation) {
     case '1':
       output = Number(num1) + Number(num2);
@@ -55,9 +58,12 @@ while (true) {
       break;
   }
 
-  prompt(`The result is ${output}`);
-  prompt('Would you like to make another calculation? y/n');
+  console.log(`The result is ${output}`);
+  //prompt(`The result is ${output}`);
+  prompt('continueCalc');
   let reply = rlSync.question();
 
   if (reply[0].toLowerCase() !== 'y') break;
 }
+
+prompt('terminate');
