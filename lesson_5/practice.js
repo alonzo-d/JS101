@@ -257,9 +257,7 @@ algo:
 //   this: function sort() {};
 // }
 // someArray.sort(); // .sort(this.someArray)
-(function printGreeting() {
-  console.log('hello');
-})();
+
 
 
 
