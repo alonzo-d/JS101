@@ -213,7 +213,7 @@
 
 //13. rtn original array structure. arrange subarr in asscending order
 //by sumof odds
-let arr = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
+//let arr = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
 /*
 data structures:
   - array to return overall result
@@ -259,8 +259,6 @@ algo:
 // someArray.sort(); // .sort(this.someArray)
 
 
-
-
 //14. rtn an array
 // let obj = {
 //   grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
@@ -300,3 +298,51 @@ algo:
 // });
 
 //console.log(resultArr);
+
+//////////////////////////
+
+// // Modifying each words
+let words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present'];
+
+// const modifiedWords = words.filter( (word, index, arr) => {
+//   arr[index + 1] += ' extra';
+//   return word.length < 6;
+// });
+
+const modifiedWords = words.filter((word, index) => {
+  words[index + 1] += ' extra';
+  return word.length < 12;
+});
+console.log(modifiedWords);
+// // Notice there are three words below length 6, but since they've been modified one is returned
+// // ["spray"]
+
+// // Appending new words
+// words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present']
+// const appendedWords = words.filter( (word, index, arr) => {
+//   arr.push('new')
+//   return word.length < 6
+// })
+
+// console.log(appendedWords)
+// // Only three fits the condition even though the `words` itself now has a lot more words with character length less than 6
+// // ["spray" ,"limit" ,"elite"]
+
+// // Deleting words
+// words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present']
+// const deleteWords = words.filter( (word, index, arr) => {
+//   arr.pop()
+//   return word.length < 6
+// })
+
+// console.log(deleteWords)
+// // Notice 'elite' is not even obtained as its been popped off `words` before filter can even get there
+// // ["spray" ,"limit"];
+
+//////////////
+
+// Swap the capitalization of every “nth” letter of a string
+// Shift all the vowels in a string N letters later in the alphabet
+// Remove all non-letter characters from a string
+// Reverse a string using only the reduce method
+
